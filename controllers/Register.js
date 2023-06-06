@@ -7,12 +7,12 @@ const HandleRegister=(req,res,knex,bcrypt)=>{
             hash:hash
         }).into('login')
         .then(m=>{
-            trx('users').returning('*').insert({
+            trx('users').insert({
                 name:name,
                 email:email,
                 joined:new Date()
             }).then(response=>{
-                res.json("success")
+                return res.json("success")
             }).catch(err=>{
                 res.json("unable to register");
             });
