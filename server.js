@@ -9,12 +9,9 @@ const knex = require('knex')({
   client: 'pg',
   connection: 
   {
-        host : '127.0.0.1',
-        port:5432,
-        user : 'postgres',
-        password : 'test',
-        database : 'smartbrain'
-      }
+    connectionString:'postgres://kaunghtetmon456:hT5zRMt4QuvJ@ep-gentle-sea-769409.ap-southeast-1.aws.neon.tech/neondb',
+    ssl:true
+}
 });
 // knex.select('*').from('users').then(data=>{
 //     console.log(data);
