@@ -12,14 +12,9 @@ const HandleRegister=(req,res,knex,bcrypt)=>{
                 email:email,
                 joined:new Date()
             }).then(response=>{
-                return res.json("success")
+                res.json("success")
             }).catch(err=>{
                 res.json("unable to register");
-                trx('users').max('id')
-                .then(result=>{
-                    console.log(result[0])
-                    return trx.raw('ALTER SEQUENCE users_id_seq RESTART WITH ' + (result[0].max + 1))
-                })
             });
         })
         .then(trx.commit)
