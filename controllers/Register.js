@@ -26,7 +26,7 @@ const HandleRegister=(req,res,knex,bcrypt)=>{
         .catch(trx.rollback)
     })
     .catch(err=>{
-        res.json("Unable to register")
+        console.log(err)
     })
 
     
