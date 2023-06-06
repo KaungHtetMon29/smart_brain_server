@@ -7,7 +7,7 @@ const HandleRegister=(req,res,knex,bcrypt)=>{
             hash:hash
         }).into('login')
         .then(m=>{
-            trx('users').insert({
+            trx('users').returning('*').insert({
                 name:name,
                 email:email,
                 joined:new Date()

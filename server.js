@@ -5,11 +5,13 @@ const cors=require('cors');
 const register=require('./controllers/Register');
 const signin= require('./controllers/Signin');
 const Imgcount=require('./controllers/Imgcount');
+require('dotenv').config();
+const { PGHOST, PGDATABASE, PGUSER, PGPASSWORD, ENDPOINT_ID } = process.env;
 const knex = require('knex')({
   client: 'pg',
   connection: 
   {
-    connectionString:'postgres://kaunghtetmon456:hT5zRMt4QuvJ@ep-lucky-hat-106183.ap-southeast-1.aws.neon.tech/smartbrain',
+    connectionString:`postgres://${PGUSER}:${PGPASSWORD}@${PGHOST}/${PGDATABASE}?options=project%3D${ENDPOINT_ID}`,
     ssl:true
 }
 });
